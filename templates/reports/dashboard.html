@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Reports Dashboard{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">
+    <i class="bi bi-bar-chart-fill"></i>
+    Reports
+</h2>
+<div class="row">
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body">
+                <h5>Total Patients</h5>
+                <h2>{{ total_patients }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body">
+                <h5>Total Doctors</h5>
+                <h2>{{ total_doctors }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-warning text-dark shadow">
+            <div class="card-body">
+                <h5>Appointments</h5>
+                <h2>{{ total_appointments }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                <h5>Total Bills</h5>
+                <h2>{{ total_bills }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-danger text-white shadow">
+            <div class="card-body">
+                <h5>Total Revenue</h5>
+                <h2>₹{{ total_revenue }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-secondary text-white shadow">
+            <div class="card-body">
+                <h5>Total Rooms</h5>
+                <h2>{{ total_rooms }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-dark text-white shadow">
+            <div class="card-body">
+                <h5>Occupied Rooms</h5>
+                <h2>{{ occupied_rooms }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body">
+                <h5>Available Rooms</h5>
+                <h2>{{ available_rooms }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 mb-4">
+        <div class="card border-primary shadow">
+            <div class="card-body text-center">
+                <h5>Current Admissions</h5>
+                <h1>{{ admitted_patients }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card border-success shadow">
+            <div class="card-body text-center">
+                <h5>Total Medicines</h5>
+                <h1>{{ total_medicines }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card border-danger shadow">
+            <div class="card-body text-center">
+                <h5>Out of Stock</h5>
+                <h1>{{ out_of_stock }}</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

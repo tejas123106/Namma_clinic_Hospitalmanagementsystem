@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Admit Patient{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Admit Patient</h2>
+
+<form action="/add_admission" method="POST">
+
+    <div class="mb-3">
+        <label>Patient</label>
+
+        <select name="patient_id" class="form-select" required>
+
+            {% for patient in patients %}
+
+            <option value="{{ patient.patient_id }}">
+                {{ patient.full_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Room</label>
+
+        <select name="room_id" class="form-select" required>
+
+            {% for room in rooms %}
+
+            <option value="{{ room.room_id }}">
+                {{ room.room_number }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Doctor</label>
+
+        <select name="doctor_id" class="form-select" required>
+
+            {% for doctor in doctors %}
+
+            <option value="{{ doctor.doctor_id }}">
+                {{ doctor.full_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Admission Date</label>
+
+        <input
+            type="date"
+            name="admission_date"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Diagnosis</label>
+
+        <textarea
+            name="diagnosis"
+            class="form-control"
+            rows="3">
+        </textarea>
+    </div>
+
+    <button class="btn btn-success">
+        Admit Patient
+    </button>
+
+    <a href="/admissions" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

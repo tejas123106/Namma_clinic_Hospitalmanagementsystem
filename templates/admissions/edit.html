@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Admission{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Edit Admission</h2>
+
+<form action="/admissions/update/{{ admission.admission_id }}" method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Patient</label>
+
+        <select name="patient_id" class="form-select" required>
+
+            {% for patient in patients %}
+
+            <option value="{{ patient.patient_id }}"
+                {% if patient.patient_id == admission.patient_id %}selected{% endif %}>
+                {{ patient.full_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Room</label>
+
+        <select name="room_id" class="form-select" required>
+
+            {% for room in rooms %}
+
+            <option value="{{ room.room_id }}"
+                {% if room.room_id == admission.room_id %}selected{% endif %}>
+                {{ room.room_number }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Doctor</label>
+
+        <select name="doctor_id" class="form-select" required>
+
+            {% for doctor in doctors %}
+
+            <option value="{{ doctor.doctor_id }}"
+                {% if doctor.doctor_id == admission.attending_doctor_id %}selected{% endif %}>
+                {{ doctor.full_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Admission Date</label>
+
+        <input
+            type="date"
+            name="admission_date"
+            class="form-control"
+            value="{{ admission.admission_date }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Diagnosis</label>
+
+        <textarea
+            name="diagnosis"
+            class="form-control"
+            rows="4">{{ admission.diagnosis }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-pencil-square"></i>
+        Update Admission
+    </button>
+
+    <a href="/admissions" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Doctor{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning">
+
+            <h3 class="mb-0">
+                <i class="bi bi-pencil-square"></i>
+                Edit Doctor
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form action="/doctors/update/{{ doctor.doctor_id }}" method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Full Name</label>
+
+                        <input type="text"
+                               name="full_name"
+                               class="form-control"
+                               value="{{ doctor.full_name }}"
+                               required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">Gender</label>
+
+                        <select name="gender" class="form-select">
+
+                            <option value="Male"
+                            {% if doctor.gender=="Male" %}selected{% endif %}>
+                            Male
+                            </option>
+
+                            <option value="Female"
+                            {% if doctor.gender=="Female" %}selected{% endif %}>
+                            Female
+                            </option>
+
+                            <option value="Other"
+                            {% if doctor.gender=="Other" %}selected{% endif %}>
+                            Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Specialization</label>
+
+                        <input
+                            type="text"
+                            name="specialization"
+                            class="form-control"
+                            value="{{ doctor.specialization }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Qualification</label>
+
+                        <input
+                            type="text"
+                            name="qualification"
+                            class="form-control"
+                            value="{{ doctor.qualification }}"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Experience (Years)</label>
+
+                        <input
+                            type="number"
+                            name="experience_years"
+                            class="form-control"
+                            value="{{ doctor.experience_years }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Consultation Fee</label>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="consultation_fee"
+                            class="form-control"
+                            value="{{ doctor.consultation_fee }}"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Phone</label>
+
+                        <input
+                            type="text"
+                            name="phone"
+                            class="form-control"
+                            value="{{ doctor.phone }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Email</label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            value="{{ doctor.email }}">
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Department</label>
+
+                        <select
+                            name="department_id"
+                            class="form-select">
+
+                            {% for department in departments %}
+
+                            <option
+                                value="{{ department.department_id }}"
+                                {% if doctor.department_id==department.department_id %}
+                                selected
+                                {% endif %}>
+
+                                {{ department.department_name }}
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Joining Date</label>
+
+                        <input
+                            type="date"
+                            name="joining_date"
+                            class="form-control"
+                            value="{{ doctor.joining_date }}">
+
+                    </div>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label>Status</label>
+
+                    <select
+                        name="status"
+                        class="form-select">
+
+                        <option value="Active"
+                        {% if doctor.status=="Active" %}selected{% endif %}>
+                        Active
+                        </option>
+
+                        <option value="Inactive"
+                        {% if doctor.status=="Inactive" %}selected{% endif %}>
+                        Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button class="btn btn-success">
+
+                    <i class="bi bi-check-circle"></i>
+
+                    Update Doctor
+
+                </button>
+
+                <a href="/doctors"
+                   class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

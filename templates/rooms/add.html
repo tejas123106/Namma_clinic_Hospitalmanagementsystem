@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Add Room{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Add Room</h2>
+
+<form action="/add_room" method="POST">
+
+    <div class="mb-3">
+        <label>Room Number</label>
+        <input type="text" name="room_number" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Room Type</label>
+        <select name="room_type" class="form-select">
+            <option>General</option>
+            <option>Private</option>
+            <option>ICU</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Floor Number</label>
+        <input type="number" name="floor_number" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Daily Charge</label>
+        <input type="number" step="0.01" name="daily_charge" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="status" class="form-select">
+            <option>Available</option>
+            <option>Occupied</option>
+            <option>Maintenance</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success">
+        Save Room
+    </button>
+
+    <a href="/rooms" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

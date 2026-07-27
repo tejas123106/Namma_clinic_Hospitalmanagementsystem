@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Admissions{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2 class="page-title">
+    <i class="bi bi-person-check-fill"></i>
+    Admissions
+</h2>
+
+    <a href="/admissions/add" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i>
+        Admit Patient
+    </a>
+
+</div>
+
+<!-- Search Form -->
+<form method="GET" action="/admissions" class="mb-3">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Search Patient, Room, Doctor or Status"
+                value="{{ search }}">
+
+        </div>
+
+        <div class="col-md-3">
+
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i>
+                Search
+            </button>
+
+            <a href="/admissions" class="btn btn-secondary">
+                Reset
+            </a>
+
+        </div>
+
+    </div>
+
+</form>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Patient</th>
+            <th>Room</th>
+            <th>Doctor</th>
+            <th>Admission Date</th>
+            <th>Discharge Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for admission in admissions %}
+
+    <tr>
+
+        <td>{{ admission.admission_id }}</td>
+
+        <td>{{ admission.patient_name }}</td>
+
+        <td>{{ admission.room_number }}</td>
+
+        <td>{{ admission.doctor_name }}</td>
+
+        <td>{{ admission.admission_date }}</td>
+
+        <td>{{ admission.discharge_date or "-" }}</td>
+
+        <td>
+
+            {% if admission.status=="Admitted" %}
+
+                <span class="badge bg-success">
+                    Admitted
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-secondary">
+                    Discharged
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            <a href="/admissions/edit/{{ admission.admission_id }}"
+               class="btn btn-warning btn-sm">
+               Edit
+            </a>
+
+            <a href="/admissions/discharge/{{ admission.admission_id }}"
+               class="btn btn-success btn-sm">
+               Discharge
+            </a>
+
+            <a href="/admissions/delete/{{ admission.admission_id }}"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm('Delete admission?')">
+               Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

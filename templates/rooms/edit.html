@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Room{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Edit Room</h2>
+
+<form action="/rooms/update/{{ room.room_id }}" method="POST">
+
+    <div class="mb-3">
+        <label>Room Number</label>
+        <input type="text"
+               name="room_number"
+               class="form-control"
+               value="{{ room.room_number }}"
+               required>
+    </div>
+
+    <div class="mb-3">
+        <label>Room Type</label>
+
+        <select name="room_type" class="form-select">
+
+            <option value="General"
+                {% if room.room_type=="General" %}selected{% endif %}>
+                General
+            </option>
+
+            <option value="Private"
+                {% if room.room_type=="Private" %}selected{% endif %}>
+                Private
+            </option>
+
+            <option value="ICU"
+                {% if room.room_type=="ICU" %}selected{% endif %}>
+                ICU
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+        <label>Floor Number</label>
+        <input type="number"
+               name="floor_number"
+               class="form-control"
+               value="{{ room.floor_number }}"
+               required>
+    </div>
+
+    <div class="mb-3">
+        <label>Daily Charge</label>
+        <input type="number"
+               step="0.01"
+               name="daily_charge"
+               class="form-control"
+               value="{{ room.daily_charge }}"
+               required>
+    </div>
+
+    <div class="mb-3">
+        <label>Status</label>
+
+        <select name="status" class="form-select">
+
+            <option value="Available"
+                {% if room.status=="Available" %}selected{% endif %}>
+                Available
+            </option>
+
+            <option value="Occupied"
+                {% if room.status=="Occupied" %}selected{% endif %}>
+                Occupied
+            </option>
+
+            <option value="Maintenance"
+                {% if room.status=="Maintenance" %}selected{% endif %}>
+                Maintenance
+            </option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+        Update Room
+    </button>
+
+    <a href="/rooms" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

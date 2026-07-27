@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row g-4">
+
+        <!-- Patients -->
+        <div class="col-md-3">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-people-fill"></i>
+                        Total Patients
+                    </h5>
+                    <h2>{{ total_patients }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctors -->
+        <div class="col-md-3">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-person-badge-fill"></i>
+                        Total Doctors
+                    </h5>
+                    <h2>{{ total_doctors }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointments -->
+        <div class="col-md-3">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-calendar-check"></i>
+                        Appointments
+                    </h5>
+                    <h2>{{ total_appointments }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Revenue -->
+        <div class="col-md-3">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-cash-stack"></i>
+                        Revenue
+                    </h5>
+                    <h2>₹0</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- Welcome Section -->
+    <div class="card">
+
+        <div class="card-body">
+
+            <h3>Welcome, Admin 👋</h3>
+
+            <p class="text-muted">
+                Welcome to the Hospital Management System Dashboard.
+                Use the sidebar to manage patients, doctors,
+                appointments, medicines, billing, and reports.
+            </p>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- Recent Activity -->
+    <div class="card">
+
+        <div class="card-header bg-primary text-white">
+
+            <h5 class="mb-0">
+                <i class="bi bi-clock-history"></i>
+                Recent Activity
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th>Module</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Patients</td>
+                        <td>CRUD Module Completed ✅</td>
+                    </tr>
+
+                    <tr>
+                        <td>Doctors</td>
+                        <td>Coming Soon</td>
+                    </tr>
+
+                    <tr>
+                        <td>Appointments</td>
+                        <td>Coming Soon</td>
+                    </tr>
+
+                    <tr>
+                        <td>Billing</td>
+                        <td>Coming Soon</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}
+Patients
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">
+    <i class="bi bi-people-fill"></i>
+    Patients
+</h2>
+
+<a href="/patients/add" class="btn btn-primary mb-3">
+    Add Patient
+</a>
+
+<!-- Search Form -->
+<form method="GET" action="/patients" class="mb-3">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Search by Name or Phone"
+                value="{{ search }}">
+
+        </div>
+
+        <div class="col-md-3">
+
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+            <a href="/patients" class="btn btn-secondary">
+                Reset
+            </a>
+
+        </div>
+
+    </div>
+
+</form>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+
+    <tr>
+
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Blood Group</th>
+        <th>Phone</th>
+        <th>Actions</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for patient in patients %}
+
+    <tr>
+
+        <td>{{ patient.patient_id }}</td>
+
+        <td>{{ patient.full_name }}</td>
+
+        <td>{{ patient.gender }}</td>
+
+        <td>{{ patient.blood_group }}</td>
+
+        <td>{{ patient.phone }}</td>
+
+        <td>
+
+            <a href="/patients/edit/{{ patient.patient_id }}"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a href="/patients/delete/{{ patient.patient_id }}"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm('Delete this patient?')">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
